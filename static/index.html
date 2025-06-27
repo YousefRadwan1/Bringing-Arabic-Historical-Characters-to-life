@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Bringing Arabic Historical Characters to Life</title>
+    <meta
+      name="description"
+      content="Experience interactive conversations with legendary Arabic historical figures through AI technology"
+    />
+    <meta
+      name="keywords"
+      content="Arabic history, historical characters, AI, interactive experience, Salah El-Din, Mohamed Ali"
+    />
+
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Cardo:ital,wght@0,400;0,700;1,400;1,700&family=Amiri:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <style>
+      /* Custom Arabic Historical Theme Styles with consistent background */
+      :root {
+        --arabic-gold: #ffd700;
+        --arabic-deep-blue: #1a1a2e;
+        --arabic-cream: #f5f2e8;
+        --arabic-bronze: #8b4513;
+        --shadow-gold: rgba(255, 215, 0, 0.3);
+        --main-bg: #1a1a2e;
+      }
+
+      body {
+        /* Changed to match Mohammed Ali page background */
+        background: var(--main-bg);
+        font-family: "Inter", sans-serif;
+        color: white;
+      }
+
+      /* Islamic Pattern Background */
+      .islamic-pattern-bg {
+        position: relative;
+        overflow: hidden;
+        background: var(--main-bg);
+      }
+
+      .islamic-pattern-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(
+            circle at 25% 25%,
+            var(--arabic-gold) 2px,
+            transparent 2px
+          ),
+          radial-gradient(
+            circle at 75% 75%,
+            var(--arabic-gold) 2px,
+            transparent 2px
+          );
+        background-size: 60px 60px;
+        opacity: 0.08;
+        z-index: -1;
+      }
+
+      /* Animated particles */
+      .particles-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--arabic-gold);
+        border-radius: 50%;
+        animation: float 8s ease-in-out infinite;
+        opacity: 0.6;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+          opacity: 0.6;
+        }
+        50% {
+          transform: translateY(-30px) rotate(180deg);
+          opacity: 1;
+        }
+      }
+
+      /* Enhanced Header */
+      .header {
+        background: rgba(26, 26, 46, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 2px solid var(--arabic-gold);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .logo img {
+        filter: drop-shadow(0 0 10px var(--shadow-gold));
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover img {
+        transform: scale(1.1);
+      }
+
+      .navmenu a {
+        color: var(--arabic-gold) !important;
+        font-weight: 500;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .navmenu a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--arabic-gold);
+        transition: width 0.3s ease;
+      }
+
+      .navmenu a:hover::after,
+      .navmenu a.active::after {
+        width: 100%;
+      }
+
+      /* Enhanced Hero Section */
+      .hero {
+        background: var(--main-bg);
+        color: white;
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="islamic" patternUnits="userSpaceOnUse" width="20" height="20"><path d="M10 0L20 10L10 20L0 10Z" fill="none" stroke="rgba(255,215,0,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23islamic)"/></svg>');
+        z-index: 1;
+      }
+
+      .hero .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero h2 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        line-height: 1.2;
+        color: white;
+      }
+
+      .underlight {
+        background: linear-gradient(45deg, var(--arabic-gold), #ffed4e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        position: relative;
+        animation: shimmer 3s ease-in-out infinite;
+      }
+
+      @keyframes shimmer {
+        0%,
+        100% {
+          filter: brightness(1);
+        }
+        50% {
+          filter: brightness(1.3);
+        }
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2.5rem;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.6;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn-get-started {
+        background: linear-gradient(45deg, var(--arabic-gold), #ffed4e);
+        color: var(--main-bg);
+        padding: 15px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px var(--shadow-gold);
+        border: 2px solid transparent;
+      }
+
+      .btn-get-started:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px var(--shadow-gold);
+        color: var(--main-bg);
+        background: linear-gradient(45deg, #ffed4e, var(--arabic-gold));
+      }
+
+      /* Enhanced Gallery Section */
+      .gallery {
+        padding: 100px 0;
+        background: var(--main-bg);
+        position: relative;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .section-title h2 {
+        font-size: 2.8rem;
+        color: var(--arabic-gold);
+        font-weight: 700;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .section-title h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(45deg, var(--arabic-gold), #ffed4e);
+        border-radius: 2px;
+      }
+
+      .section-title p {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s ease;
+        background: rgba(255, 255, 255, 0.1);
+        margin-bottom: 30px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 215, 0, 0.2);
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        border-color: var(--arabic-gold);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .gallery-links {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(26, 26, 46, 0.9),
+          rgba(255, 215, 0, 0.9)
+        );
+        opacity: 0;
+        transition: all 0.4s ease;
+      }
+
+      .gallery-item:hover .gallery-links {
+        opacity: 1;
+      }
+
+      .gallery-links a {
+        color: white;
+        font-size: 2rem;
+        transition: all 0.3s ease;
+      }
+
+      .gallery-links a:hover {
+        transform: scale(1.2);
+        color: var(--arabic-gold);
+      }
+
+      .character-name {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(26, 26, 46, 0.9), transparent);
+        color: var(--arabic-gold);
+        padding: 20px;
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: 600;
+        font-family: "Amiri", serif;
+      }
+
+      /* Features Section */
+      .features {
+        padding: 100px 0;
+        background: var(--main-bg);
+        color: white;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        transition: all 0.3s ease;
+        height: 100%;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--arabic-gold);
+        box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        color: var(--arabic-gold);
+        margin-bottom: 20px;
+      }
+
+      .feature-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--arabic-gold);
+      }
+
+      .feature-card p {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      /* Educational Slider in Footer */
+      .footer .educational-slider {
+        width: 100%;
+        height: 70px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 215, 0, 0.1)
+        );
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+        margin-bottom: 2rem;
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        backdrop-filter: blur(10px);
+      }
+
+      .footer .slider-track {
+        display: flex;
+        animation: slideEducational 20s linear infinite;
+        height: 100%;
+        align-items: center;
+      }
+
+      .footer .slide-item {
+        min-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 40px;
+        position: relative;
+      }
+
+      .footer .slide-text {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: white;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        position: relative;
+        z-index: 2;
+      }
+
+      .footer .slide-text .highlight {
+        color: var(--arabic-gold);
+        animation: textGlow 2s ease-in-out infinite alternate;
+      }
+
+      .footer .slide-icon {
+        font-size: 1.8rem;
+        color: var(--arabic-gold);
+        margin-right: 15px;
+        animation: iconFloat 3s ease-in-out infinite;
+      }
+
+      .footer .slider-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 20% 50%,
+            rgba(255, 215, 0, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 50%,
+            rgba(255, 215, 0, 0.1) 0%,
+            transparent 50%
+          );
+        animation: backgroundPulse 4s ease-in-out infinite;
+      }
+
+      /* Animations */
+      @keyframes slideEducational {
+        0% {
+          transform: translateX(0);
+        }
+        20% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-100%);
+        }
+        45% {
+          transform: translateX(-100%);
+        }
+        50% {
+          transform: translateX(-200%);
+        }
+        70% {
+          transform: translateX(-200%);
+        }
+        75% {
+          transform: translateX(-300%);
+        }
+        95% {
+          transform: translateX(-300%);
+        }
+        100% {
+          transform: translateX(-400%);
+        }
+      }
+
+      @keyframes textGlow {
+        from {
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+            0 0 15px rgba(255, 215, 0, 0.3);
+        }
+        to {
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+            0 0 25px rgba(255, 215, 0, 0.6);
+        }
+      }
+
+      @keyframes iconFloat {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-3px) rotate(3deg);
+        }
+      }
+
+      @keyframes backgroundPulse {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      /* Pause on hover */
+      .footer .educational-slider:hover .slider-track {
+        animation-play-state: paused;
+      }
+
+      /* Responsive design for footer slider */
+      @media (max-width: 768px) {
+        .footer .slide-text {
+          font-size: 1rem;
+        }
+
+        .footer .slide-icon {
+          font-size: 1.4rem;
+          margin-right: 10px;
+        }
+
+        .footer .educational-slider {
+          height: 60px;
+        }
+
+        .footer .slide-item {
+          padding: 0 20px;
+        }
+      }
+
+      /* Scroll Top Button */
+      .scroll-top {
+        background: var(--arabic-gold) !important;
+        color: var(--main-bg) !important;
+        box-shadow: 0 4px 15px var(--shadow-gold);
+      }
+
+      .scroll-top:hover {
+        background: #ffed4e !important;
+        transform: translateY(-2px);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero h2 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+        }
+
+        .section-title h2 {
+          font-size: 2.2rem;
+        }
+
+        .gallery-item {
+          margin-bottom: 20px;
+        }
+      }
+
+      /* Scroll animations */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Preloader styling to match theme */
+      #preloader {
+        background: var(--main-bg);
+      }
+
+      #preloader .line {
+        background: var(--arabic-gold);
+      }
+    </style>
+  </head>
+
+  <body class="index-page">
+    <header id="header" class="header d-flex align-items-center sticky-top">
+      <div
+        class="container-fluid position-relative d-flex align-items-center justify-content-between"
+      >
+        <a
+          href="index.html"
+          class="logo d-flex align-items-center me-auto me-xl-0"
+        >
+          <img src="assets/img/favicon.png" alt="Logo" />
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li>
+              <a href="index.html" class="active">Home</a>
+            </li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+        <div></div>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Hero Section -->
+      <section id="hero" class="hero section islamic-pattern-bg">
+        <div class="particles-container" id="particles"></div>
+        <div class="container text-white">
+          <div class="row justify-content-center">
+            <div
+              class="col-lg-8 text-center"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <h2>
+                <span>Bringing </span>
+                <span class="underlight">Arabic Historical Characters</span>
+                <span> To Life</span>
+              </h2>
+              <p>
+                Experience the wisdom of legendary Arabic leaders through
+                cutting-edge AI technology. Engage in meaningful conversations
+                with historical figures who shaped the course of history, from
+                military strategists to visionary rulers. Step into the past and
+                discover their stories, philosophies, and timeless insights.
+              </p>
+              <a href="#gallery" class="btn-get-started">Explore Characters</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /Hero Section -->
+
+      <!-- Features Section -->
+      <section class="features section">
+        <div class="container">
+          <div class="section-title" data-aos="fade-up">
+            <h2>Experience History Like Never Before</h2>
+            <p>
+              Discover the revolutionary features that bring historical figures
+              to life
+            </p>
+          </div>
+
+          <div class="row gy-4">
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-chat-dots"></i>
+                </div>
+                <h3>Interactive Conversations</h3>
+                <p>
+                  Engage in real-time dialogue with historical figures using
+                  advanced AI that captures their personality and knowledge.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-person-video3"></i>
+                </div>
+                <h3>3D Avatars</h3>
+                <p>
+                  Meet lifelike 3D representations that speak, move, and express
+                  emotions just like the historical figures themselves.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="bi bi-book"></i>
+                </div>
+                <h3>Historical Accuracy</h3>
+                <p>
+                  Every response is grounded in extensive historical research
+                  and authentic sources from the Islamic Golden Age.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery Section -->
+      <section id="gallery" class="gallery section islamic-pattern-bg">
+        <div class="container">
+          <div class="section-title" data-aos="fade-up">
+            <h2>Meet the Legends</h2>
+            <p>
+              Choose a historical figure and begin your journey through time
+            </p>
+          </div>
+
+          <div class="row gy-4 justify-content-center">
+            <div
+              class="col-xl-4 col-lg-6 col-md-8"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="gallery-item h-100">
+                <img
+                  src="assets/img/gallery/gallery-1.png"
+                  class="img-fluid"
+                  alt="Salah El-Din Al-Ayyubi"
+                />
+                <div class="character-name">صلاح الدين الأيوبي</div>
+                <div
+                  class="gallery-links d-flex align-items-center justify-content-center"
+                >
+                  <a
+                    href="Characters/Salah-Eldin-2.html"
+                    class="details-link"
+                    title="Talk to Salah El-Din"
+                    ><i class="bi bi-chat-square-text"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <!-- End Gallery Item -->
+
+            <div
+              class="col-xl-4 col-lg-6 col-md-8"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="gallery-item h-100">
+                <img
+                  src="assets/img/gallery/gallery-2.jpeg"
+                  class="img-fluid"
+                  alt="Mohamed Ali Pasha"
+                />
+                <div class="character-name">محمد علي باشا</div>
+                <div
+                  class="gallery-links d-flex align-items-center justify-content-center"
+                >
+                  <a
+                    href="Characters/mohamed-ali-2.html"
+                    class="details-link"
+                    title="Talk to Mohamed Ali"
+                    ><i class="bi bi-chat-square-text"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <!-- End Gallery Item -->
+          </div>
+        </div>
+      </section>
+      <!-- /Gallery Section -->
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="container">
+        <!-- Educational Slide Bar -->
+        <div class="educational-slider mb-4">
+          <div class="slider-bg"></div>
+          <div class="slider-track">
+            <!-- Slide 1 -->
+            <div class="slide-item">
+              <i class="bi bi-lightbulb slide-icon"></i>
+              <div class="slide-text">
+                Discover the
+                <span class="highlight">wisdom of the past</span> through
+                interactive conversations with history's greatest minds
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide-item">
+              <i class="bi bi-chat-dots slide-icon"></i>
+              <div class="slide-text">
+                Transform your learning experience with
+                <span class="highlight">AI-powered historical dialogues</span>
+                that bring textbooks to life
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide-item">
+              <i class="bi bi-brain slide-icon"></i>
+              <div class="slide-text">
+                Enhance memory retention through
+                <span class="highlight">immersive storytelling</span> and
+                personalized historical interactions
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="slide-item">
+              <i class="bi bi-globe slide-icon"></i>
+              <div class="slide-text">
+                Explore <span class="highlight">Arabic heritage</span> and
+                connect with legendary figures who shaped our civilization
+              </div>
+            </div>
+
+            <!-- Slide 5 (loops back) -->
+            <div class="slide-item">
+              <i class="bi bi-lightbulb slide-icon"></i>
+              <div class="slide-text">
+                Discover the
+                <span class="highlight">wisdom of the past</span> through
+                interactive conversations with history's greatest minds
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Content -->
+        <div class="row">
+          <div class="col-md-6">
+            <h5>
+              <i class="bi bi-book-half me-2"></i>Historical Characters Project
+            </h5>
+            <p class="text-white-50 mb-2">
+              Bringing Arabic history to life through interactive AI technology
+            </p>
+            <p class="text-white-50 mb-0">
+              <small
+                >A graduation project dedicated to revolutionizing historical
+                education</small
+              >
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <div class="mb-3">
+              <h6 class="text-white">Quick Links</h6>
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <a href="index.html" class="text-decoration-none">Home</a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="about.html" class="text-decoration-none">About</a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="contact.html" class="text-decoration-none"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="text-white-50">
+              <p class="mb-1">
+                <i class="bi bi-mortarboard me-1"></i>
+                Academic Year 2024-2025
+              </p>
+              <p class="mb-0">
+                &copy; 2025 Historical Characters Team. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr
+          class="my-3"
+          style="border-color: var(--arabic-gold); opacity: 0.3"
+        />
+
+        <div class="row">
+          <div class="col-12 text-center">
+            <p class="text-white-50 mb-0">
+              <small>
+                <i
+                  class="bi bi-heart-fill me-1"
+                  style="color: var(--arabic-gold)"
+                ></i>
+                Crafted with passion for preserving and sharing Arabic heritage
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="line"></div>
+    </div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+      // Create animated particles
+      function createParticles() {
+        const particlesContainer = document.getElementById("particles");
+        const particleCount = 30;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.top = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 8 + "s";
+          particle.style.animationDuration = Math.random() * 4 + 6 + "s";
+          particlesContainer.appendChild(particle);
+        }
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Initialize particles when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        createParticles();
+
+        // Initialize AOS
+        AOS.init({
+          duration: 1000,
+          easing: "ease-in-out",
+          once: true,
+          mirror: false,
+        });
+      });
+
+      // Add scroll-based animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      // Observe elements for scroll animations
+      document.addEventListener("DOMContentLoaded", () => {
+        const animatedElements = document.querySelectorAll(".fade-in-up");
+        animatedElements.forEach((el) => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Arabic Historical Characters</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --arabic-gold: #ffd700;
+        --arabic-deep-blue: #1a1a2e;
+        --shadow-gold: rgba(255, 215, 0, 0.3);
+        --main-bg: #1a1a2e;
+      }
+
+      html,
+      body {
+        background: var(--main-bg);
+        font-family: "Inter", sans-serif;
+        color: white;
+        overflow-x: hidden;
+        overflow-y: auto !important;
+        height: auto !important;
+        min-height: 100vh;
+        scroll-behavior: smooth;
+      }
+
+      /* Islamic Pattern Background */
+      .islamic-pattern-bg {
+        position: relative;
+        overflow: visible;
+        min-height: 100vh;
+      }
+
+      .islamic-pattern-bg::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(
+            circle at 25% 25%,
+            var(--arabic-gold) 2px,
+            transparent 2px
+          ),
+          radial-gradient(
+            circle at 75% 75%,
+            var(--arabic-gold) 2px,
+            transparent 2px
+          );
+        background-size: 60px 60px;
+        opacity: 0.08;
+        z-index: -2;
+        pointer-events: none;
+      }
+
+      /* Animated particles */
+      .particles-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--arabic-gold);
+        border-radius: 50%;
+        animation: float 8s ease-in-out infinite;
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+          opacity: 0.6;
+        }
+        50% {
+          transform: translateY(-30px) rotate(180deg);
+          opacity: 1;
+        }
+      }
+
+      /* Enhanced Navbar */
+      .navbar {
+        background: rgba(26, 26, 46, 0.95) !important;
+        backdrop-filter: blur(10px);
+        border-bottom: 2px solid var(--arabic-gold);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .navbar-brand {
+        color: var(--arabic-gold) !important;
+        font-weight: 700;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-brand:hover {
+        transform: scale(1.05);
+        text-shadow: 0 0 10px var(--shadow-gold);
+      }
+
+      .nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-weight: 500;
+        position: relative;
+        transition: all 0.3s ease;
+        margin: 0 10px;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--arabic-gold);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--arabic-gold) !important;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: transparent;
+        padding: 100px 0 50px;
+        position: relative;
+        text-align: center;
+        z-index: 1;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-title .highlight {
+        background: linear-gradient(45deg, var(--arabic-gold), #ffed4e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 3s ease-in-out infinite;
+      }
+
+      @keyframes shimmer {
+        0%,
+        100% {
+          filter: brightness(1);
+        }
+        50% {
+          filter: brightness(1.3);
+        }
+      }
+
+      .hero-subtitle {
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Main content container */
+      .main-content {
+        position: relative;
+        z-index: 1;
+        background: transparent;
+      }
+
+      /* Enhanced Cards */
+      .card {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        border-color: var(--arabic-gold);
+        box-shadow: 0 25px 50px rgba(255, 215, 0, 0.2);
+      }
+
+      .card-body {
+        color: white;
+      }
+
+      .card-title {
+        color: var(--arabic-gold);
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .card-text {
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.6;
+      }
+
+      /* Form Styling */
+      .form-label {
+        color: var(--arabic-gold);
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      .form-control {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        border-radius: 10px;
+        color: white;
+        padding: 12px 15px;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--arabic-gold);
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        color: white;
+      }
+
+      .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Enhanced Button */
+      .btn-primary {
+        background: linear-gradient(45deg, var(--arabic-gold), #ffed4e);
+        border: none;
+        color: var(--main-bg);
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px var(--shadow-gold);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px var(--shadow-gold);
+        background: linear-gradient(45deg, #ffed4e, var(--arabic-gold));
+        color: var(--main-bg);
+      }
+
+      /* Contact Info Cards */
+      .contact-card {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+        height: 100%;
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--arabic-gold);
+        box-shadow: 0 25px 50px rgba(255, 215, 0, 0.2);
+      }
+
+      .contact-icon {
+        font-size: 3rem;
+        color: var(--arabic-gold);
+        margin-bottom: 1rem;
+      }
+
+      .contact-card h5 {
+        color: var(--arabic-gold);
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .contact-card p {
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 0;
+      }
+
+      /* Highlight for parts to fill */
+      .highlight-fill {
+        background: rgba(255, 215, 0, 0.2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        border: 1px dashed var(--arabic-gold);
+        color: var(--arabic-gold);
+        font-weight: bold;
+      }
+
+      /* Enhanced Footer */
+      .footer {
+        background: rgba(26, 26, 46, 0.95);
+        border-top: 3px solid var(--arabic-gold);
+        backdrop-filter: blur(10px);
+        margin-top: 5rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .footer a {
+        color: var(--arabic-gold);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer a:hover {
+        color: #ffed4e;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.1rem;
+        }
+
+        .contact-card {
+          margin-bottom: 1rem;
+        }
+      }
+
+      /* Animation for content */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+
+  <body class="islamic-pattern-bg">
+    <div class="particles-container" id="particles"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="bi bi-book-half"></i> Historical Characters
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main-content">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="container">
+          <h1 class="hero-title fade-in">
+            <span class="highlight">Contact</span> Our Team
+          </h1>
+          <p class="hero-subtitle fade-in">
+            Have questions about our graduation project? We'd love to hear from
+            you!
+          </p>
+        </div>
+      </section>
+
+      <div class="container my-5">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <!-- Contact Form -->
+            <div class="card shadow-lg mb-5 fade-in">
+              <div class="card-body p-4">
+                <h2 class="card-title">
+                  <i class="bi bi-envelope me-2"></i>Send Us a Message
+                </h2>
+                <p class="card-text">
+                  Interested in our Arabic Historical Characters project? Have
+                  feedback or suggestions? We'd love to hear from you! Fill out
+                  the form below and we'll get back to you soon.
+                </p>
+
+                <form class="mt-4" action="#" method="POST">
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="name" class="form-label">
+                        <i class="bi bi-person me-1"></i>Full Name
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        name="name"
+                        placeholder="Your Full Name"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="email" class="form-label">
+                        <i class="bi bi-envelope me-1"></i>Email Address
+                      </label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        placeholder="your.email@example.com"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="subject" class="form-label">
+                        <i class="bi bi-tag me-1"></i>Subject
+                      </label>
+                      <select
+                        class="form-control"
+                        id="subject"
+                        name="subject"
+                        required
+                      >
+                        <option value="">Select a topic...</option>
+                        <option value="project-inquiry">Project Inquiry</option>
+                        <option value="collaboration">Collaboration</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="technical-support">
+                          Technical Support
+                        </option>
+                        <option value="academic-inquiry">
+                          Academic Inquiry
+                        </option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="institution" class="form-label">
+                        <i class="bi bi-building me-1"></i
+                        >Institution/Organization
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="institution"
+                        name="institution"
+                        placeholder="Your University/Company (Optional)"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="message" class="form-label">
+                      <i class="bi bi-chat-dots me-1"></i>Message
+                    </label>
+                    <textarea
+                      class="form-control"
+                      id="message"
+                      name="message"
+                      rows="5"
+                      placeholder="Tell us about your inquiry, feedback, or how we can help you..."
+                      required
+                    ></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-send me-2"></i>Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="row mb-5">
+              <div class="col-md-4 mb-4 fade-in">
+                <div class="contact-card">
+                  <div class="contact-icon">
+                    <i class="bi bi-geo-alt"></i>
+                  </div>
+                  <h5>University Location</h5>
+                  <p>
+                    <span>Egypt-Japan University Of Science And Technology</span
+                    ><br />
+                    <span
+                      >Computer Science and Information Technology / AI & Data
+                      Science</span
+                    ><br />
+                    <span>Borg Al-arab Alexandria, Egypt</span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-4 mb-4 fade-in">
+                <div class="contact-card">
+                  <div class="contact-icon">
+                    <i class="bi bi-envelope"></i>
+                  </div>
+                  <h5>Project Email</h5>
+                  <p>
+                    <span>ahmed.zaky@ejust.edu.eg</span><br />
+                    <small class="text-white-50"
+                      >For project-related inquiries</small
+                    >
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-4 mb-4 fade-in">
+                <div class="contact-card">
+                  <div class="contact-icon">
+                    <i class="bi bi-github"></i>
+                  </div>
+                  <h5>Project Repository</h5>
+                  <p>
+                    <a
+                      href="#"
+                      class="text-decoration-none"
+                      style="color: var(--arabic-gold)"
+                    >
+                      <span
+                        >https://github.com/ Abdulrahmanrihan/
+                        Bringing-Arabic-History-To-Life.git</span
+                      > </a
+                    ><br />
+                    <small class="text-white-50">View our source code</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Supervisor Contact -->
+            <div class="card shadow-lg mb-5 fade-in">
+              <div class="card-body p-4">
+                <h3 class="card-title">
+                  <i class="bi bi-person-badge me-2"></i>Academic Supervision
+                </h3>
+                <div class="row">
+                  <div class="col-md-6">
+                    <h5 class="text-white">Project Supervisor</h5>
+                    <p class="card-text">
+                      <strong>Dr. <span>Ahmed Bayoumi</span></strong
+                      ><br />
+                      <span>AI & Data Science</span><br />
+                      <span
+                        >Egypt-Japan University Of Science And Technology</span
+                      ><br />
+                      <i class="bi bi-envelope me-1"></i>
+                      <span>ahmed.zaky@ejust.edu.eg</span>
+                    </p>
+                  </div>
+                  <div class="col-md-6">
+                    <h5 class="text-white">Academic Year</h5>
+                    <p class="card-text">
+                      <strong>2024-2025</strong><br />
+                      Final Year Graduation Project<br />
+                      <!-- <span class="highlight-fill">[YOUR DEGREE PROGRAM]</span
+                      >\ -->
+                      <br />
+                      <span>Semster 2</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="card shadow-lg fade-in">
+              <div class="card-body p-4">
+                <h3 class="card-title">
+                  <i class="bi bi-question-circle me-2"></i>Frequently Asked
+                  Questions
+                </h3>
+
+                <div class="accordion accordion-flush" id="faqAccordion">
+                  <div
+                    class="accordion-item"
+                    style="
+                      background: transparent;
+                      border: 1px solid rgba(255, 215, 0, 0.3);
+                      margin-bottom: 10px;
+                      border-radius: 10px;
+                    "
+                  >
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq1"
+                        style="
+                          background: transparent;
+                          color: white;
+                          border: none;
+                        "
+                      >
+                        What is this project about?
+                      </button>
+                    </h2>
+                    <div
+                      id="faq1"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div
+                        class="accordion-body"
+                        style="color: rgba(255, 255, 255, 0.9)"
+                      >
+                        Our graduation project is an interactive educational
+                        platform that brings Arabic historical characters to
+                        life using AI technology. Students can have
+                        conversations with figures like Salah El-Din Al-Ayyubi
+                        and Mohamed Ali Pasha.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="accordion-item"
+                    style="
+                      background: transparent;
+                      border: 1px solid rgba(255, 215, 0, 0.3);
+                      margin-bottom: 10px;
+                      border-radius: 10px;
+                    "
+                  >
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq2"
+                        style="
+                          background: transparent;
+                          color: white;
+                          border: none;
+                        "
+                      >
+                        Can I use this for my research?
+                      </button>
+                    </h2>
+                    <div
+                      id="faq2"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div
+                        class="accordion-body"
+                        style="color: rgba(255, 255, 255, 0.9)"
+                      >
+                        Yes! We welcome academic collaboration and research
+                        partnerships. Please contact us with details about your
+                        research and how our project might be helpful.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="accordion-item"
+                    style="
+                      background: transparent;
+                      border: 1px solid rgba(255, 215, 0, 0.3);
+                      margin-bottom: 10px;
+                      border-radius: 10px;
+                    "
+                  >
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq3"
+                        style="
+                          background: transparent;
+                          color: white;
+                          border: none;
+                        "
+                      >
+                        Is the source code available?
+                      </button>
+                    </h2>
+                    <div
+                      id="faq3"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div
+                        class="accordion-body"
+                        style="color: rgba(255, 255, 255, 0.9)"
+                      >
+                        As this is an academic project, parts of our code may be
+                        available for educational purposes. Please contact us
+                        for specific requests and we'll be happy to discuss
+                        sharing appropriate components.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer bg-dark text-white py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>
+              <i class="bi bi-book-half me-2"></i>Historical Characters Project
+            </h5>
+            <p class="text-white-50">
+              A graduation project bringing Arabic history to life through
+              technology
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="index.html" class="text-decoration-none">Home</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="about.html" class="text-decoration-none">About</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="contact.html" class="text-decoration-none">Contact</a>
+              </li>
+            </ul>
+            <p class="text-white-50">
+              &copy; 2025 Historical Characters Team. Academic Project.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Create animated particles
+      function createParticles() {
+        const particlesContainer = document.getElementById("particles");
+        const particleCount = 30;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.top = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 8 + "s";
+          particle.style.animationDuration = Math.random() * 4 + 6 + "s";
+          particlesContainer.appendChild(particle);
+        }
+      }
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      // Initialize when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        createParticles();
+
+        // Ensure scrolling is enabled
+        document.body.style.overflow = "auto";
+        document.documentElement.style.overflow = "auto";
+        document.body.style.touchAction = "auto";
+        document.body.style.overscrollBehavior = "auto";
+
+        // Observe elements for scroll animations
+        const animatedElements = document.querySelectorAll(".fade-in");
+        animatedElements.forEach((el) => observer.observe(el));
+      });
+
+      // Form submission handler
+      document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert(
+          "Thank you for your message! This is a demo form for the graduation project."
+        );
+      });
+    </script>
+  </body>
+</html>
