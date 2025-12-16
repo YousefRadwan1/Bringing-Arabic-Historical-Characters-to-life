@@ -222,7 +222,7 @@ class ArabicWikiRAG:
         return []
     
 def main():
-    GEMINI_API_KEY = "AIzaSyBrjJ8gCp2E4sq0Klc3FQukg61SIVHoobY" 
+    GEMINI_API_KEY = "gemini_api_key" 
     
     # Create the RAG system with a user ID
     user_id = "test_user_123"
