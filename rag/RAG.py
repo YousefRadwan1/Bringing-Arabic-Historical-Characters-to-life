@@ -101,7 +101,7 @@ class ArabicWikiRAG:
 
 
 def main():
-    GEMINI_API_KEY = "AIzaSyBrjJ8gCp2E4sq0Klc3FQukg61SIVHoobY"
+    GEMINI_API_KEY = "gemini_api_key"
 
     rag_system = ArabicWikiRAG(GEMINI_API_KEY)
 
