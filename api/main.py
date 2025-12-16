@@ -30,7 +30,7 @@ class QARequest(BaseModel):
 
 # Initialize RAG system
 rag_system = ArabicWikiRAG(
-    gemini_api_key="AIzaSyBrjJ8gCp2E4sq0Klc3FQukg61SIVHoobY"
+    gemini_api_key="gemini_api_key"
 )
 
 
